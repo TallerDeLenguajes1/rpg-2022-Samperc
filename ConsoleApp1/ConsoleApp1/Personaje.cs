@@ -14,7 +14,7 @@ namespace ConsoleApp1
         Piquero,
         Campesino,
         Mandoble,
-        jinete,
+        
         
     }
     public enum Nombre{
@@ -66,22 +66,35 @@ namespace ConsoleApp1
         string Nombre;
         int Edad;
         int Salud;
-        public Personaje(int velocidad, int destreza, int fuerza, int nivel, int armadura)
+        string[] nombres = new string[] { "Godwin", " Percival", "Wolfgang", "Nicholas", "Manrique", "Brayton" };
+        public Personaje(int velocidad, int destreza, int fuerza, int nivel, int armadura, string tipo, int nombre, int edad, int salud) 
         {
             this.velocidad = velocidad;
             this.Destreza = destreza;
-             this.Fuerza = fuerza;
-             this.Nivel = nivel;
-             this.Armadura = armadura;
-        }
-        public Personaje(string tipo, string nombre, int edad, int salud)
-        {
+            this.Fuerza = fuerza;
+            this.Nivel = nivel;
+            this.Armadura = armadura;
             Tipo = tipo;
-            Nombre = nombre;
-            
+            Nombre = nombres[nombre];
             Edad = edad;
             Salud = salud;
         }
+
+        public void MOSTRAR()
+        {
+            Console.WriteLine("velocidad= "+ velocidad);
+            Console.WriteLine("Destreza= "+ Destreza);
+            Console.WriteLine("Fuerza= " + Fuerza);
+            Console.WriteLine("Nivel= "+ Nivel);
+            Console.WriteLine("Armadura= " + Armadura);
+            Console.WriteLine("Tipo= "+Tipo);
+            Console.WriteLine("Nombre= "+ Nombre);
+            Console.WriteLine("Edad= "+ Edad);
+            Console.WriteLine("Salud= " + Salud);
+
+
+        }
+
 
 
 

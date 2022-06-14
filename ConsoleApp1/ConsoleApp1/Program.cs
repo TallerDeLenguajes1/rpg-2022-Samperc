@@ -11,23 +11,34 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             //Microsoft.VisualBasic.Interaction.InputBox("Ingresa un numero", "Input", "0000");
-            List<Personaje> P = new List<Personaje>();
-            string[] personajes= new string[]{"personaje1","personaje2","personaje3"};
-            Console.WriteLine(personajes[0]);
-            Console.WriteLine(personajes[1]);
-            Console.WriteLine(personajes[2]);
-        }
+            List<Personaje> PJ = new List<Personaje>();
 
-
-        void empezarJuego(List<Personaje> P, int n)
-        {
-            for (int i = 0; i < n; i++)
+            empezarJuego(PJ, 6);
+            for (int i  = 0; i  < 6;  i++)
             {
-                Random Aleatorio = new Random();
+                Console.WriteLine("PJ " + i);
+
+                PJ[i].MOSTRAR();
+                Console.WriteLine("\n");
+            }
+
+            Console.Read();
+            
+            
+        }
+          public static void empezarJuego(List<Personaje> PJ, int numeroPersonajes)
+        {
+            Random Aleatorio = new Random();
+            for (int i = 0; i < numeroPersonajes; i++)
+            {   
                 
-                P.Add(new Personaje(Aleatorio.Next(1,11),Aleatorio.Next(1,6),Aleatorio.Next(1,11),Aleatorio.Next(1,11),Aleatorio.Next(1,11)));//Cargar Caracteristicas
+                int num = Aleatorio.Next(0, 6);
+                string tipo = Convert.ToString((Tipos)num);
+                PJ.Add(new Personaje(Aleatorio.Next(1, 11), Aleatorio.Next(1, 6), Aleatorio.Next(1, 11), Aleatorio.Next(1, 11), 
+                Aleatorio.Next(1, 11),tipo, Aleatorio.Next(0,6),Aleatorio.Next(0,300),100));
                 
-                P.Add(new Personaje());//Cargar Datos
+
+           
 
             }
         }
