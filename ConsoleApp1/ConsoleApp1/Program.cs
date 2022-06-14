@@ -10,21 +10,26 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Microsoft.VisualBasic.Interaction.InputBox("Ingresa un numero", "Input", "0000");
-            List<Personaje> P=new List<Personaje>;
-            Personaje P1=new Personaje();
-            P1.caract
+            //Microsoft.VisualBasic.Interaction.InputBox("Ingresa un numero", "Input", "0000");
+            List<Personaje> P = new List<Personaje>();
+            string[] personajes= new string[]{"personaje1","personaje2","personaje3"};
+            Console.WriteLine(personajes[0]);
+            Console.WriteLine(personajes[1]);
+            Console.WriteLine(personajes[2]);
         }
 
 
-        void empezarJuego(List<Personaje> P)
+        void empezarJuego(List<Personaje> P, int n)
         {
-          for (int i = 0; i < P.Count; i++)
-			{
-                Random Aleatorio=new Random();
-              
+            for (int i = 0; i < n; i++)
+            {
+                Random Aleatorio = new Random();
                 
-			}    
+                P.Add(new Personaje(Aleatorio.Next(1,11),Aleatorio.Next(1,6),Aleatorio.Next(1,11),Aleatorio.Next(1,11),Aleatorio.Next(1,11)));//Cargar Caracteristicas
+                
+                P.Add(new Personaje());//Cargar Datos
+
+            }
         }
     }
 }
