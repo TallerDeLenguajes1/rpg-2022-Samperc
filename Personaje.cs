@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp1
-{
-    public enum Tipos
+ public enum Tipos
     {
         Ballestero,
         Arquero,
@@ -71,8 +63,8 @@ namespace ConsoleApp1
         public float fuerza { get => Fuerza; set => Fuerza = value; }
         public float armadura { get => Armadura; set => Armadura = value; }
         public int nivel { get => Nivel; set => Nivel = value; }
-        public int id { get => ID;  }
-
+        public int id { get => ID; set=> ID=value ;}
+        public string nombre { get => Nombre;set => Nombre = value;}
 
         public Personaje(int id)
         {
@@ -83,7 +75,7 @@ namespace ConsoleApp1
             this.velocidad = Aleatorio.Next(1, 11);
             this.Destreza = Aleatorio.Next(1, 6);
             this.Fuerza = Aleatorio.Next(1, 11);
-            this.Nivel = Aleatorio.Next(1, 11);
+            this.Nivel = Aleatorio.Next(1, ID+5);
             this.Armadura = Aleatorio.Next(1, 11);
             this.Tipo =(Tipos)num;
             this.Nombre = nombres[Aleatorio.Next(0, 6)];
@@ -115,10 +107,14 @@ namespace ConsoleApp1
          }
          public void actualizarValores(){
 
-            Salud=Salud+10;
-            Nivel=Nivel + 1;
-            Fuerza=Fuerza * (float)1.05;
-            Armadura=Armadura* (float)1.10;
+            Salud=Salud+5;
+            if (Nivel <10)
+            {
+                Nivel=Nivel + 1;
+            }
+            
+            Fuerza=Fuerza * (float)1.02;
+            Armadura=Armadura* (float)1.05;
 
 
          }
@@ -127,4 +123,3 @@ namespace ConsoleApp1
 
 
     }
-}
