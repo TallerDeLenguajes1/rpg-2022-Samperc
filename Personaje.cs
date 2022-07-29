@@ -48,6 +48,7 @@
              }
          } */
         int ID;
+        int Edad;
         int velocidad;
         int Destreza;
         float Fuerza;
@@ -55,16 +56,18 @@
         float Armadura;
         Tipos Tipo;
         string Nombre;
-        int Edad;
         int Salud;
+        int victorias;
          const int MDP= 50000;
-        string[] nombres = new string[] { "Godwin", " Percival", "Wolfgang", "Nicholas", "Manrique", "Brayton" };
+        string[] nombres = new string[] { "Godwin", "Percival", "Wolfgang", "Nicholas", "Manrique", "Brayton" };
         public int salud { get => Salud; set => Salud = value; }
         public float fuerza { get => Fuerza; set => Fuerza = value; }
         public float armadura { get => Armadura; set => Armadura = value; }
         public int nivel { get => Nivel; set => Nivel = value; }
         public int id { get => ID; set=> ID=value ;}
+        public int EDAD { get => Edad; set=>Edad =value ;}
         public string nombre { get => Nombre;set => Nombre = value;}
+        public int Vict { get => victorias;set => victorias = value;}
 
         public Personaje(int id)
         {
@@ -79,8 +82,8 @@
             this.Armadura = Aleatorio.Next(1, 11);
             this.Tipo =(Tipos)num;
             this.Nombre = nombres[Aleatorio.Next(0, 6)];
-            this.Edad = Aleatorio.Next(0, 300);
             this.Salud = 100;
+            this.victorias=0;
         }
 
         public void MOSTRAR()
@@ -94,6 +97,7 @@
             Console.WriteLine("Nombre= " + Nombre);
             Console.WriteLine("Edad= " + Edad);
             Console.WriteLine("Salud= " + Salud);
+            Console.WriteLine("Victorias= " + victorias);
          }
          public void Ataque(Personaje P2){
              Random Aleatorio = new Random();
@@ -108,13 +112,10 @@
          public void actualizarValores(){
 
             Salud=Salud+5;
-            if (Nivel <10)
-            {
-                Nivel=Nivel + 1;
-            }
             
             Fuerza=Fuerza * (float)1.02;
             Armadura=Armadura* (float)1.05;
+            victorias=victorias+1;
 
 
          }

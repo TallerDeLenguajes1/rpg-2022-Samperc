@@ -1,5 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Text.Json;
+using System.Net;
+using System.IO;
+
 Console.WriteLine("Hello, World!");
 
 
@@ -38,7 +41,8 @@ for (int i = 0; i < numeroPersonajes; i++)
 //Crear archivo csv para guardar ganadores
 FileStream MiArchivo = new FileStream("ganadores.csv", FileMode.OpenOrCreate);
 StreamWriter sw = new StreamWriter(MiArchivo);
-
+int[] victorias;
+victorias= new int[] {0,0,0,0,0,0};
 //Pelea de personajes y elimacion del perdedor (Se muestra el ganador y lo guarda en archivo csv)
 while (PJ.Count > 1)
 {
@@ -55,6 +59,7 @@ while (PJ.Count > 1)
         sw.WriteLine(PJ[j].id + ";" + PJ[j].nombre + ";" + PJ[j].nivel);
 
         Console.WriteLine("--------------------");
+        victorias[PJ[j+1].id]=PJ[j+1].Vict;
         PJ.RemoveAt(j + 1);
     }
     else
@@ -66,19 +71,12 @@ while (PJ.Count > 1)
         sw.WriteLine(PJ[j + 1].id + ";" + PJ[j + 1].nombre + ";" + PJ[j + 1].nivel);
 
         Console.WriteLine("--------------------");
-
+        victorias[PJ[j].id]=PJ[j].Vict;
         PJ.RemoveAt(j);
     }
 
 }
+victorias[PJ[0].id]=PJ[0].Vict;
 sw.Close();
 
-
-
-
-
-
-
-
-
-
+ funciones.ApiGraficos(victorias);
